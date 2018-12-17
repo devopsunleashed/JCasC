@@ -1,0 +1,40 @@
+plugins:
+  sites:
+  - id: "default"
+    url: "http://updates.jenkins.io/update-center.json"
+  required:
+    chucknorris: latest
+    git: 3.9.1
+jenkins:
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  disableRememberMe: false
+  mode: NORMAL
+  numExecutors: 2
+  primaryView:
+    all:
+      name: "all"
+  quietPeriod: 5
+  scmCheckoutRetryCount: 0
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "builduser"
+        password: ${builduserpassword}
+  slaveAgentPort: -1
+  views:
+  - all:
+      name: "all"
+tool:
+  jdk:
+    defaultProperties:
+    - installSource:
+        installers:
+        - jdkInstaller:
+            acceptLicense: false
